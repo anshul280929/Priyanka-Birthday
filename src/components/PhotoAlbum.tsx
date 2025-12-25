@@ -18,12 +18,12 @@ export const PhotoAlbum = ({ onComplete }: PhotoAlbumProps) => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const photos: Photo[] = [
-    { id: 1, url: 'https://ibb.co/MkdGkJF8', rotation: -8 },
-    { id: 2, url: 'https://ibb.co/KzVXLCwL', rotation: 5 },
+    { id: 1, url: 'https://ibb.co/KzVXLCwL', rotation: -8 },
+    { id: 2, url: 'https://ibb.co/DgTgFkjR', rotation: 5 },
     { id: 3, url: 'https://ibb.co/rGtMKQxT', rotation: -3 },
-    { id: 4, url: 'https://ibb.co/DDzPGXBc', rotation: 7 },
+    { id: 4, url: 'https://ibb.co/C3cQC9M2', rotation: 7 },
     { id: 5, url: 'https://ibb.co/1YdHxsPC', rotation: -5 },
-    { id: 6, url: 'https://ibb.co/Q7fM9Y3L', rotation: 4 },
+    { id: 6, url: 'https://ibb.co/mVJjtXXL', rotation: 4 },
   ];
 
   const handleOpen = () => {
@@ -67,7 +67,7 @@ export const PhotoAlbum = ({ onComplete }: PhotoAlbumProps) => {
         </button>
 
         <h2 className="text-4xl md:text-6xl font-display text-gold text-shadow-glow mb-4 animate-scale-in">
-          Happy Birthday!
+          Happy Birthday Priyanka!
         </h2>
         <p className="text-xl md:text-2xl font-body text-muted-foreground mb-12 animate-fade-in-up">
           🎂 Wishing you all the joy and happiness! 🎂
