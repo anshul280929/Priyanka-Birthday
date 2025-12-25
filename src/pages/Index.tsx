@@ -11,8 +11,8 @@ import { Confetti } from '@/components/Confetti';
 type Stage = 'countdown' | 'ready' | 'messages' | 'album' | 'complete';
 
 const birthdayMessages = [
-  "Every moment with you is a treasure",
-  "Your smile lights up the world around you",
+  "Every second I spend with you is a blessing",
+  "Your smile is the best gift I could ever receive",
   "May this year bring you endless happiness",
   "You deserve all the love and joy today",
   "Here's to another amazing year ahead!",

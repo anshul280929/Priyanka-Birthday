@@ -11,41 +11,52 @@ export const BackgroundMusic = ({ isPlaying }: BackgroundMusicProps) => {
   const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
-    audioRef.current = new Audio('https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3');
-    audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
+    const audio = new Audio('/audio/background.mp3'); // LOCAL FILE
+    audio.loop = true;
+    audio.volume = 0.3;
+    audio.muted = true; // start muted to allow autoplay
+
+    audioRef.current = audio;
+
+    // Try autoplay
+    audio
+      .play()
+      .then(() => {
+        // Autoplay succeeded
+      })
+      .catch(() => {
+        // Autoplay blocked until user interaction
+      });
 
     return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
+      audio.pause();
+      audioRef.current = null;
     };
   }, []);
 
   useEffect(() => {
-    if (audioRef.current && isPlaying && hasInteracted) {
-      audioRef.current.play().catch(() => {
-        // Auto-play blocked, user needs to interact
-      });
-    } else if (audioRef.current && !isPlaying) {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.play().catch(() => {});
+    } else {
       audioRef.current.pause();
     }
-  }, [isPlaying, hasInteracted]);
+  }, [isPlaying]);
 
   const handleToggle = () => {
     setHasInteracted(true);
-    if (audioRef.current) {
-      if (isMuted) {
-        audioRef.current.muted = false;
-        if (isPlaying) {
-          audioRef.current.play();
-        }
-      } else {
-        audioRef.current.muted = true;
-      }
-      setIsMuted(!isMuted);
+
+    if (!audioRef.current) return;
+
+    if (isMuted) {
+      audioRef.current.muted = false;
+      audioRef.current.play();
+    } else {
+      audioRef.current.muted = true;
     }
+
+    setIsMuted(!isMuted);
   };
 
   if (!isPlaying) return null;
