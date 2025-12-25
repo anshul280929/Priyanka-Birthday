@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garabaldi:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 345 30% 8%;
+    --foreground: 45 80% 95%;
+
+    --card: 345 25% 12%;
+    --card-foreground: 45 80% 95%;
+
+    --popover: 345 25% 12%;
+    --popover-foreground: 45 80% 95%;
+
+    --primary: 43 74% 66%;
+    --primary-foreground: 345 30% 8%;
+
+    --secondary: 345 35% 18%;
+    --secondary-foreground: 45 80% 95%;
+
+    --muted: 345 20% 20%;
+    --muted-foreground: 45 40% 70%;
+
+    --accent: 350 60% 65%;
+    --accent-foreground: 45 80% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 345 25% 25%;
+    --input: 345 25% 25%;
+    --ring: 43 74% 66%;
+
+    --radius: 0.75rem;
+
+    --gold: 43 74% 66%;
+    --gold-light: 45 80% 80%;
+    --rose: 350 60% 65%;
+    --burgundy: 345 50% 25%;
+
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Cormorant Garabaldi', serif;
+  }
+
+  .dark {
+    --background: 345 30% 8%;
+    --foreground: 45 80% 95%;
+    --card: 345 25% 12%;
+    --card-foreground: 45 80% 95%;
+    --popover: 345 25% 12%;
+    --popover-foreground: 45 80% 95%;
+    --primary: 43 74% 66%;
+    --primary-foreground: 345 30% 8%;
+    --secondary: 345 35% 18%;
+    --secondary-foreground: 45 80% 95%;
+    --muted: 345 20% 20%;
+    --muted-foreground: 45 40% 70%;
+    --accent: 350 60% 65%;
+    --accent-foreground: 45 80% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 345 25% 25%;
+    --input: 345 25% 25%;
+    --ring: 43 74% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .text-gold-light {
+    color: hsl(var(--gold-light));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .text-rose-accent {
+    color: hsl(var(--rose));
+  }
+
+  .bg-burgundy {
+    background-color: hsl(var(--burgundy));
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(var(--gold-light)) 100%);
+  }
+
+  .gradient-radial {
+    background: radial-gradient(ellipse at center, hsl(345 25% 15%) 0%, hsl(var(--background)) 70%);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(var(--gold) / 0.5), 0 0 40px hsl(var(--gold) / 0.3);
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      110deg,
+      transparent 25%,
+      hsl(var(--gold) / 0.3) 50%,
+      transparent 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px hsl(var(--gold) / 0.4); }
+  50% { box-shadow: 0 0 40px hsl(var(--gold) / 0.6), 0 0 60px hsl(var(--gold) / 0.3); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes photo-pop {
+  0% { opacity: 0; transform: scale(0) rotate(-10deg); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-confetti {
+  animation: confetti-fall 4s linear forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out forwards;
+}
+
+.animate-photo-pop {
+  animation: photo-pop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
